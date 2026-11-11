@@ -9,7 +9,7 @@ Aplikasi berjalan sepenuhnya di Mac/PC lokal: frontend HTML/CSS/JS, backend Node
 ### 1. Halaman Login
 Halaman autentikasi awal yang mendukung verifikasi akun berbasis password dengan Argon2id serta dukungan login biometrik (Touch ID / WebAuthn). Indikator status dongle dan sistem keamanan lokal ditampilkan di bagian atas.
 
-![Halaman Login](login%20kriptohore.jpg)
+![Halaman Login](login%20kriptohore.png)
 
 ### 2. Dashboard Utama & Menu Navigasi
 Pusat kendali (*Security Dashboard*) yang menampilkan status koneksi perangkat keras (*Memory Camera Dongle*), database MySQL/MariaDB, serta mesin enkripsi yang aktif. Menu navigasi di sebelah kiri memberikan akses cepat ke berbagai modul kriptografi lanjutan.
