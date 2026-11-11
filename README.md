@@ -14,7 +14,7 @@ Halaman autentikasi awal yang mendukung verifikasi akun berbasis password dengan
 ### 2. Dashboard Utama & Menu Navigasi
 Pusat kendali (*Security Dashboard*) yang menampilkan status koneksi perangkat keras (*Memory Camera Dongle*), database MySQL/MariaDB, serta mesin enkripsi yang aktif. Menu navigasi di sebelah kiri memberikan akses cepat ke berbagai modul kriptografi lanjutan.
 
-![Dashboard Utama](menu%20kriptohore.jpg)
+![Dashboard Utama](menu%20kriptohore.png)
 
 ---
 
