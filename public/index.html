@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1E3A8A">
+  <title>KRIPTOHORE | Local Cryptography System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">K</div>
+    <div><strong>KRIPTOHORE</strong><small>Cryptography Security Workspace</small></div>
+    <div class="top-actions"><span id="dongleHeader" class="pill dongle-pill">Dongle: memeriksa…</span><span class="pill"><span class="live-dot"></span> LOCAL SECURITY SYSTEM</span><button id="logoutBtn" class="ghost hidden">Keluar</button></div>
+  </header>
+  <main class="shell">
+    <section id="gateView">
+      <section class="hero">
+        <div class="eyebrow">SECURE MESSAGING LAB</div>
+        <h1>Selamat datang di<br><span>Kriptohore.</span></h1>
+      </section>
+      <section class="auth-panel panel">
+        <div class="section-head"><div><span class="number">00</span><h2>Masuk ke akun</h2></div><span id="authState" class="status">Belum masuk</span></div>
+        <label for="accountName">Nama akun</label>
+        <input id="accountName" type="text" value="demo" autocomplete="username" maxlength="80" placeholder="Nama akun Kriptohore">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Masukkan password: kriptohore">
+        <div class="actions"><button id="passwordLogin" class="primary">Masuk dengan Password</button><button id="fingerprintLogin" class="touchid-button"><span aria-hidden="true">◉</span> Masuk dengan Touch ID</button></div>
+        <p id="deviceStatus" class="hint" aria-live="polite">Colokkan Memory Camera Dongle terlebih dahulu. Touch ID memerlukan browser yang mendukung WebAuthn dan localhost.</p>
+      </section>
+    </section>
+<section id="appView" class="hidden"><div class="app-welcome"><div><div class="eyebrow">ACCESS GRANTED</div><h2>Laboratorium algoritma</h2><p>Pilih modul untuk memulai proses kriptografi.</p></div><div class="app-controls"><span class="access-badge"><span class="dot"></span> Akses terverifikasi</span></div></div>
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-caption">WORKSPACE</div>
+        <button class="tab active" data-tab="overview"><span>▦</span> Dashboard</button>
+        <div class="sidebar-caption">CRYPTOGRAPHY</div>
+        <button class="tab" data-tab="text"><span>⌘</span> Super Enkripsi Teks</button>
+        <button class="tab" data-tab="file"><span>▤</span> Secure File Vault</button>
+        <button class="tab" data-tab="vault"><span>▣</span> Secret Notes</button>
+        <button class="tab" data-tab="stego"><span>▧</span> Image Steganography</button>
+        <button class="tab" data-tab="chain"><span>⛓</span> Blockchain Ledger</button>
+        <div class="sidebar-caption">SYSTEM</div>
+        <button class="tab" data-tab="device"><span>◈</span> Device Security</button>
+        <div class="sidebar-foot"><span class="live-dot"></span> Local environment<br><small>MySQL · Memory Camera</small></div>
+      </aside>
+      <div class="module-area">
+        <section id="overview" class="module panel">
+          <div class="section-head"><div><span class="number">00</span><h2>Security Dashboard</h2></div><span class="tag">LOCALHOST MODE</span></div>
+          <p class="muted">Pusat kendali keamanan Kriptohore. Semua modul berjalan di komputer lokal dan menggunakan database MySQL XAMPP.</p>
+          <div class="dashboard-grid">
+            <article class="metric-card"><span class="metric-icon">◈</span><small>DEVICE AUTHENTICATION</small><strong id="dashDongle">Checking…</strong><span>Memory Camera Dongle</span></article>
+            <article class="metric-card"><span class="metric-icon">▣</span><small>DATABASE</small><strong id="dashDatabase">Checking…</strong><span>MySQL / MariaDB</span></article>
+            <article class="metric-card"><span class="metric-icon">⌘</span><small>ENCRYPTION ENGINE</small><strong>ACTIVE</strong><span>AES-256 · PBKDF2 · HMAC</span></article>
+          </div>
+          <div class="welcome-card"><div><span class="eyebrow">SECURE BY DESIGN</span><h3>Your private cryptography workspace.</h3><p>Gunakan menu di sebelah kiri untuk mengakses modul enkripsi, vault, steganografi, dan blockchain.</p></div><div class="welcome-symbol">K</div></div>
+        </section>
+
+    <section id="text" class="module panel hidden">
+      <div class="section-head"><div><span class="number">01</span><h2>Super-enkripsi teks</h2></div><span class="tag">Vigenère → AES-256-GCM</span></div>
+      <p class="muted">Teks terlebih dahulu ditransformasikan dengan Vigenère (klasik), lalu dienkripsi dengan AES-GCM (modern). Vigenère hanya untuk memenuhi demonstrasi algoritma klasik, bukan keamanan sebenarnya.</p>
+      <label for="plainText">Pesan</label><textarea id="plainText" rows="4" placeholder="Tulis pesan rahasia..."></textarea>
+      <div class="grid two">
+        <div><label for="textKey">Kunci AES / frasa sandi</label><input id="textKey" type="password" placeholder="Gunakan frasa sandi kuat"></div>
+        <div><label for="vigKey">Kunci Vigenère (huruf A-Z)</label><input id="vigKey" value="KRIPTO" maxlength="64"></div>
+      </div>
+      <div class="actions"><button id="encryptText" class="primary">Enkripsi</button><button id="decryptText">Dekripsi hasil</button></div>
+      <label for="textOutput">Output (JSON berisi salt, IV, ciphertext)</label><textarea id="textOutput" rows="5" spellcheck="false" placeholder="Hasil enkripsi akan muncul di sini..."></textarea>
+      <p id="textStatus" class="hint" aria-live="polite"></p>
+    </section>
+
+    <section id="file" class="module panel hidden">
+      <div class="section-head"><div><span class="number">02</span><h2>Enkripsi file</h2></div><span class="tag">AES-256-CTR + HMAC-SHA-256</span></div>
+      <p class="muted">File menggunakan algoritma berbeda dari super-enkripsi teks: AES-256-CTR dengan autentikasi HMAC-SHA-256 (encrypt-then-MAC). Integritas diverifikasi sebelum dekripsi.</p>
+      <label for="fileInput">Pilih file untuk dienkripsi / didekripsi</label><input id="fileInput" type="file">
+      <label for="fileKey">Kunci file</label><input id="fileKey" type="password" placeholder="Frasa sandi untuk file">
+      <div class="actions"><button id="encryptFile" class="primary">Enkripsi file</button><button id="decryptFile">Dekripsi file .cvault</button></div>
+      <p id="fileStatus" class="hint" aria-live="polite"></p>
+    </section>
+
+    <section id="vault" class="module panel hidden">
+      <div class="section-head"><div><span class="number">03</span><h2>Vault pesan penting</h2></div><span class="tag">AES-256-GCM + MySQL</span></div>
+      <p class="muted">Pesan dienkripsi di browser menggunakan AES-256-GCM sebelum ciphertext disimpan pada database MySQL melalui backend. Kunci enkripsi tidak dikirim ke server.</p>
+      <label for="vaultMessage">Pesan penting</label><textarea id="vaultMessage" rows="3" placeholder="Contoh: catatan rahasia..."></textarea>
+      <label for="vaultKey">Kunci enkripsi vault</label><input id="vaultKey" type="password" placeholder="Kunci yang sama untuk membuka pesan">
+      <div class="actions"><button id="saveVault" class="primary">Enkripsi & simpan</button><button id="loadVault">Buka pesan</button><button id="deleteVault" class="danger">Hapus</button></div>
+      <pre id="vaultOutput" class="output">Belum ada pesan.</pre>
+      <p id="vaultStatus" class="hint" aria-live="polite"></p>
+    </section>
+
+    <section id="stego" class="module panel hidden">
+      <div class="section-head"><div><span class="number">04</span><h2>Steganografi gambar LSB</h2></div><span class="tag">PNG lossless</span></div>
+      <p class="muted">Pesan dienkripsi terlebih dahulu dengan AES-256-GCM, kemudian ciphertext disisipkan ke bit paling rendah kanal RGB menggunakan LSB. Simpan sebagai PNG; JPEG atau kompresi ulang dapat merusak pesan.</p>
+      <label for="stegoImage">Pilih gambar PNG/JPG</label><input id="stegoImage" type="file" accept="image/*">
+      <label for="stegoMessage">Pesan yang disembunyikan</label><textarea id="stegoMessage" rows="3" placeholder="Pesan rahasia"></textarea>
+      <label for="stegoKey">Kunci enkripsi pesan gambar</label><input id="stegoKey" type="password" placeholder="Frasa sandi AES-256-GCM">
+      <div class="actions"><button id="hideMessage" class="primary">Sembunyikan & unduh PNG</button><button id="extractMessage">Ekstrak pesan dari gambar</button></div>
+      <div class="preview-grid"><div><span class="hint">Pratinjau</span><canvas id="stegoCanvas"></canvas></div><div><label for="stegoOutput">Pesan hasil ekstraksi</label><textarea id="stegoOutput" rows="5" readonly></textarea></div></div>
+      <p id="stegoStatus" class="hint" aria-live="polite"></p>
+    </section>
+
+    <section id="chain" class="module panel hidden">
+      <div class="section-head"><div><span class="number">05</span><h2>Blockchain sederhana</h2></div><span class="tag">SHA-256 + Proof-of-Work</span></div>
+      <p class="muted">Mencatat event/aset sebagai blok berantai. Proof-of-work sengaja ringan untuk demo. Rantai hash sederhana disimpan sebagai catatan pada database MySQL. Ini demonstrasi blockchain terpusat, bukan jaringan blockchain terdistribusi.</p>
+      <div class="grid two">
+        <div><label for="assetName">Nama aset / event</label><input id="assetName" placeholder="Contoh: dokumen-001"></div>
+        <div><label for="assetDetails">Detail</label><input id="assetDetails" placeholder="Contoh: dokumen dienkripsi"></div>
+      </div>
+      <div class="actions"><button id="addBlock" class="primary">Tambahkan blok</button><button id="verifyChain">Verifikasi rantai</button><button id="resetChain" class="danger">Reset demo</button></div>
+      <p id="chainStatus" class="hint" aria-live="polite"></p>
+      <div id="chainList" class="chain-list"></div>
+    </section>
+        <section id="device" class="module panel hidden">
+          <div class="section-head"><div><span class="number">06</span><h2>Device Security</h2></div><span class="tag">MEMORY CAMERA DONGLE</span></div>
+          <p class="muted">Desktop Helper memantau volume removable dan memvalidasi file kunci yang telah diprovisikan. Dongle harus terpasang sebelum autentikasi.</p>
+          <div class="device-status-card"><div class="device-orb">◈</div><div><strong id="deviceDongleTitle">Memeriksa dongle…</strong><p id="deviceDongleText">Menghubungi Local Security Helper.</p></div></div>
+          <div class="grid two"><div><label>Helper service</label><pre id="helperStatus" class="output">Checking…</pre></div><div><label>Database service</label><pre id="databaseStatus" class="output">Checking…</pre></div></div>
+          <p class="hint">Untuk demo lokal, dongle dikenali dari hash SHA-256 file MEMORY_CAMERA_DONGLE.key. Salinan file dapat dikloning; ini bukan secure element anti-kloning.</p>
+        </section>
+      </div>
+    </div>
+
+</section>
+    <footer><span>Kriptohore • Proyek akademik</span><span>Jangan gunakan data rahasia sungguhan pada demo ini.</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
